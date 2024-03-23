@@ -130,7 +130,7 @@ def main():
     optimizer = SGD(model.parameters(), lr=LEARNING_RATES[CURRENT_TRAINING_CONFIG - 1])
     loss = nn.CrossEntropyLoss()
 
-    max_epoch = 15
+    max_epoch = 20
     train(model, train_loader, val_loader, optimizer, loss, max_epoch, device)
 
 
