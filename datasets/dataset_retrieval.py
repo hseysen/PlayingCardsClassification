@@ -6,8 +6,8 @@ import torch.nn
 from torch.utils.data import Dataset
 
 
-class custom_dataset(Dataset):
-    def __init__(self, mode="train", root="datasets/demo_dataset", transforms=None):
+class PlayingCardsDataset(Dataset):
+    def __init__(self, mode="train", root="datasets/PlayingCards", transforms=None):
         super().__init__()
         self.mode = mode
         self.root = root
