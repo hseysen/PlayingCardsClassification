@@ -1,5 +1,5 @@
 template
-datasets/demo_dataset
+datasets/PlayingCards
 *pth
 __pycache__
 runs
