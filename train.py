@@ -121,7 +121,7 @@ def main():
     ])
 
     train_data = PlayingCardsDataset("train", transforms=tr)
-    val_data = PlayingCardsDataset("val", transforms=tr)
+    val_data = PlayingCardsDataset("valid", transforms=tr)
 
     train_loader = DataLoader(train_data, batch_size=4, shuffle=True)
     val_loader = DataLoader(val_data, batch_size=2, drop_last=True)
