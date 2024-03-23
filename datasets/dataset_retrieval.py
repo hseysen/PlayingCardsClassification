@@ -4,6 +4,7 @@ from PIL import Image
 import torch
 import torch.nn
 from torch.utils.data import Dataset
+from torchvision import transforms
 
 
 class PlayingCardsDataset(Dataset):
@@ -42,6 +43,9 @@ class PlayingCardsDataset(Dataset):
         image = Image.open(image_name)
         if(self.transforms):
             image = self.transforms(image)
+        else:
+            tr = transforms.Compose([transforms.ToTensor()])
+            image = tr(image)
         
         return image, label
             
