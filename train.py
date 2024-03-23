@@ -126,7 +126,7 @@ def main():
     train_loader = DataLoader(train_data, batch_size=4, shuffle=True)
     val_loader = DataLoader(val_data, batch_size=2, drop_last=True)
 
-    model = Resnet().to(device)
+    model = Resnet(53).to(device)
     optimizer = SGD(model.parameters(), lr=LEARNING_RATES[CURRENT_TRAINING_CONFIG - 1])
     loss = nn.CrossEntropyLoss()
 
