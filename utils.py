@@ -5,6 +5,9 @@ from torchvision.transforms import functional
 from datasets.dataset_retrieval import PlayingCardsDataset
 
 
+NORMS_FILE = "norms.txt"
+
+
 # https://discuss.pytorch.org/t/computing-the-mean-and-std-of-dataset/34949/13
 class Stats(ImageStat.Stat):
     def __add__(self, other):
@@ -23,12 +26,25 @@ def calculate_norms(dataset):
             else:
                 stats += s
 
-    print(f"mean: {stats.mean}\nstd: {stats.stddev}")
-    # TODO: Write this to a file and implement functionality for reading from file
+    mean = stats.mean
+    stdv = stats.stddev
+    with open(NORMS_FILE, "w") as wf:
+        for x1, x2 in zip(mean, stdv):
+            print(f"{x1}\t{x2}", file=wf)
+
+
+def retrieve_norms():
+    mean = []
+    stdv = []
+    with open(NORMS_FILE, "r") as rf:
+        for line in rf.readlines():
+            x1, x2 = map(float, line.split())
+            mean.append(x1)
+            stdv.append(x2)
+    return mean, stdv
 
 
 if __name__ == "__main__":
-    calculate_norms(PlayingCardsDataset())
-
-# mean: [198.535528698164, 186.41360832482462, 179.76456663467994]
-# std: [78.065716597632, 85.66597062664934, 87.28034113077337]    
+    # calculate_norms(PlayingCardsDataset())
+    retrieved_mean, retrieved_stdv = retrieve_norms()
+    print(retrieved_mean, retrieved_stdv, sep="\n")
