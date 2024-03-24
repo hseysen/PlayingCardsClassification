@@ -49,8 +49,8 @@ def val(model, data_val, loss_function, writer, epoch, device):
             tq.update(1)
 
     f1score = f1(torch.tensor(f1_list), torch.tensor(f1t_list))
-    writer.add_scalar(f"Validation F1 {f1score} {epoch}")
-    writer.add_scalar(f"Validation Loss {total_loss / len(data_val)} {epoch}")
+    writer.add_scalar("Validation F1", f1score, epoch)
+    writer.add_scalar("Validation Loss", total_loss / len(data_val), epoch)
 
     tq.close()
     print(f"F1 score: {f1score}")
@@ -91,7 +91,7 @@ def train(model, train_loader, val_loader, optimizer, loss_fn, n_epochs, device)
             tq.set_postfix(loss_st=f"{loss.item():.6f}")
             tq.update(1)
         
-        writer.add_scalar(f"Training Loss {running_loss / len(train_loader)} {epoch}")
+        writer.add_scalar(f"Training Loss", running_loss / len(train_loader), epoch)
         
         tq.close()
         epoch_loss = running_loss / len(train_loader)
