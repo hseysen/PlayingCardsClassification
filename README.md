@@ -9,12 +9,19 @@ The task in the laboratory work asks the student to use the **ResNet18** model a
 
 ### Results
 I have trained the **ResNet18** model with the modified classifier with three different learning rates, as given in the task. The graphs for *Training Loss*, *Validation Loss* and *Validation F1 Score* are given below:
+
 ---
+
 ![Training Loss for 3 different learning rates](tensorboard_plots/TrainingLoss.png)
+
 ---
+
 ![Validation Loss for 3 different learning rates](tensorboard_plots/ValidationLoss.png)
+
 ---
+
 ![Validation F1 Score for 3 different learning rates](tensorboard_plots/ValidationF1.png)
+
 ---
 
 ### Conclusion
